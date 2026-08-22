@@ -1,0 +1,16 @@
+name: Footprints
+version: '${version}'
+main: ru.desawff.footprints.FootprintsPlugin
+api-version: '1.21'
+folia-supported: true
+author: desawff
+description: Footprints that fade away behind walking players.
+commands:
+  footprints:
+    description: Toggle, clear and tune footprints
+    usage: /footprints toggle|clear|stamp|reload|status
+    aliases: [fp]
+permissions:
+  footprints.admin:
+    description: Reload the config and place debug prints
+    default: op

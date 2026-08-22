@@ -1,0 +1,7 @@
+{
+  "pack": {
+    "pack_format": 64,
+    "supported_formats": [46, 99],
+    "description": "Footprint glyphs"
+  }
+}

@@ -1,0 +1,109 @@
+# A footprint is a TextDisplay showing a white glyph tinted with the colour of the
+# ground below. Fading runs through text opacity, which is why one pair of textures
+# is enough for every surface listed at the bottom of this file.
+#
+# Entity budget: online players * max-per-player. Display entities are not ticked by
+# the server (no AI, no physics, no collisions), so the cost is packets: one on spawn,
+# a handful while the print fades, one on removal.
+
+# Distance walked between prints, in blocks.
+step-distance: 0.62
+# Sideways offset that alternates left and right foot, in blocks.
+side-offset: 0.13
+# Height above the ground. Stops the print from z-fighting with the block face.
+lift: 0.015
+# Shift along the view direction. A line of text is not drawn centred on its entity,
+# so this one is eyeballed: /footprints stamp, then /footprints reload.
+forward-offset: 0.18
+# Print size. The glyph is 16 px tall, which covers about 0.4 blocks at scale 1.0,
+# and the foot itself takes up 8 of those pixels across.
+scale: 1.0
+# Visibility, as a fraction of the client render distance. 0.35 is roughly 22 blocks.
+view-range: 0.35
+# Hard cap per player. Print 13 removes the oldest one.
+max-per-player: 12
+# Ticks between fade updates. Higher means fewer packets.
+tick-period: 4
+# Where fading begins, as a fraction of the lifetime. 0.55 fades over the last 45%.
+fade-start: 0.55
+# Only stamp when the player is actually standing on the ground.
+require-on-ground: true
+# Sneaking players leave nothing behind.
+skip-sneaking: false
+# Which way the print faces. Text renders from one side only: with false the normal
+# points into the ground and nothing shows up from above, even though the entity is
+# there. Kept as an escape hatch in case the rotation sign ever has to flip back.
+face-up: true
+
+# Fixed light level for prints, 0-15. -1 takes the light of the block underneath.
+brightness:
+  block: -1
+  sky: -1
+
+glyph:
+  font: 'minecraft:default'
+  # Private Use Area codepoints, defined in resourcepack/assets/minecraft/font/default.json
+  left: "\uEB00"
+  right: "\uEB01"
+
+# color    tint of the print (the glyph itself is white)
+# opacity  starting opacity, 0-255
+# lifetime how long the print lives, in ticks (20 = one second)
+surfaces:
+  sand:
+    color: '#B09B63'
+    opacity: 170
+    lifetime: 200
+    blocks:
+      - SAND
+      - RED_SAND
+      - SUSPICIOUS_SAND
+  grass:
+    color: '#3F4F27'
+    opacity: 130
+    lifetime: 120
+    blocks:
+      - GRASS_BLOCK
+      - PODZOL
+      - MYCELIUM
+      - MOSS_BLOCK
+  dirt:
+    color: '#4A3524'
+    opacity: 150
+    lifetime: 160
+    blocks:
+      - DIRT
+      - COARSE_DIRT
+      - ROOTED_DIRT
+      - FARMLAND
+      - DIRT_PATH
+  mud:
+    color: '#2E2620'
+    opacity: 185
+    lifetime: 260
+    blocks:
+      - MUD
+      - MUDDY_MANGROVE_ROOTS
+      - CLAY
+  gravel:
+    color: '#5A5450'
+    opacity: 120
+    lifetime: 110
+    blocks:
+      - GRAVEL
+      - SUSPICIOUS_GRAVEL
+  snow:
+    color: '#8FA6C4'
+    opacity: 195
+    lifetime: 320
+    blocks:
+      - SNOW_BLOCK
+      - SNOW
+      - POWDER_SNOW
+  ash:
+    color: '#3A2C2C'
+    opacity: 160
+    lifetime: 200
+    blocks:
+      - SOUL_SAND
+      - SOUL_SOIL
