@@ -4,6 +4,13 @@ Walk across sand, dirt or snow on a Paper or Folia server and you leave prints b
 They take the colour of the ground, fade out and disappear. Nothing they leave survives a
 restart.
 
+<p align="center">
+  <img src="docs/print.png" alt="A trail of prints fading out on dirt" width="608">
+</p>
+
+<p align="center"><sub>Built from the shipped textures rather than grabbed in game: same glyph,
+same dirt colour out of <code>config.yml</code>, faded the way <code>fade-start</code> fades it.</sub></p>
+
 ## How it works
 
 A print is a `TextDisplay` holding a white glyph tinted with the colour configured for that
