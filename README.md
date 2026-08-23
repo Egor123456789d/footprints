@@ -8,8 +8,8 @@ restart.
   <img src="docs/print.png" alt="A trail of prints fading out on dirt" width="608">
 </p>
 
-<p align="center"><sub>Built from the shipped textures rather than grabbed in game: same glyph,
-same dirt colour out of <code>config.yml</code>, faded the way <code>fade-start</code> fades it.</sub></p>
+<p align="center"><sub>Not a screenshot: the shipped glyph, the dirt colour out of
+<code>config.yml</code>, faded the way <code>fade-start</code> fades it.</sub></p>
 
 ## How it works
 
@@ -75,19 +75,6 @@ Two values are easier to eyeball than to reason about. `forward-offset` shifts t
 along the view direction, because a line of text is not drawn centred on its entity, and
 `lift` raises it off the block so it stops z-fighting. Place one with `/footprints stamp`,
 edit the file, run `/footprints reload`, look again.
-
-## Notes for anyone reading the source
-
-Text renders from one side only. The quad gets laid flat by rotating it -90 degrees around
-X. At +90 it lies flat too, but then the normal points down into the block, and the print
-turns invisible from above while the entity is still there and still selectable. Setting
-`face-up: false` flips the sign back if that ever needs testing again.
-
-The glyphs live at U+EB00 and U+EB01 in the Private Use Area. If you move them, keep both
-feet within columns 4 to 11 of the texture. A bitmap glyph advances to its rightmost lit
-column, so a shape whose mirror image ends one column short is centred differently, and the
-left print drifts away from the right one. `tools/make_glyphs.py` draws both textures from
-ASCII art and prints the advance it ends up with.
 
 ## Building
 
